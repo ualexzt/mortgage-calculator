@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './components/header';
 import { Container } from '@mui/material';
 import BankList from './components/bankList';
+import { Route, Routes } from 'react-router-dom';
+import BankDetail from './components/bankDetail';
 
 function App() {
   return (
@@ -11,7 +13,10 @@ function App() {
         maxWidth="lg"
         sx={{ display: 'flex', flexWrap: 'wrap', mt: 2, justifyContent: 'center', gap: 5 }}
       >
-        <BankList />
+        <Routes>
+          <Route path="/" element={<BankList />} />
+          <Route path="/bank/:id" element={<BankDetail />} />
+        </Routes>
       </Container>
     </>
   );
