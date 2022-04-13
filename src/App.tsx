@@ -4,6 +4,7 @@ import { Container } from '@mui/material';
 import BankList from './components/bankList';
 import { Route, Routes } from 'react-router-dom';
 import BankDetail from './components/bankDetail';
+import EditBank from './components/EditBank';
 
 function App() {
   return (
@@ -15,7 +16,9 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<BankList />} />
+          <Route path="/bank/add" element={<EditBank />} />
           <Route path="/bank/:id" element={<BankDetail />} />
+          <Route path="/bank/edit/:id" element={<EditBank />} />
         </Routes>
       </Container>
     </>

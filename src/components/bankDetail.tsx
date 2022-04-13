@@ -89,7 +89,6 @@ const BankDetail = () => {
           </Grid>
         </Grid>
       </Paper>
-
       <Dialog
         open={open}
         onClose={handleClose}

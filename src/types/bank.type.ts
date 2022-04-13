@@ -1,5 +1,5 @@
 export interface IBankItem {
-  id: number;
+  id?: number;
   name: string;
   description: string;
   rate: number;
