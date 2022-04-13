@@ -8,6 +8,24 @@
       "maxLoan": 10000,
       "minPayment": 100,
       "loanTerm": 12
+    },
+    {
+      "name": "Alpha Bank",
+      "description": "This is the best bank",
+      "rate": 1,
+      "maxLoan": 100000,
+      "minPayment": 1000,
+      "loanTerm": 36,
+      "id": 2
+    },
+    {
+      "name": "Private Bank",
+      "description": "This is city bank",
+      "rate": 3,
+      "maxLoan": 50000,
+      "minPayment": 500,
+      "loanTerm": 60,
+      "id": 3
     }
   ]
 }

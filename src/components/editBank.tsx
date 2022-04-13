@@ -43,7 +43,7 @@ const EditBank = () => {
       if (params.id) {
         editBank(Number(params.id), values).then(() => navigate(`/bank/${params.id}`));
       } else {
-        addNewBank(values, resetForm).then(() => navigate(`/bank`));
+        addNewBank(values, resetForm).then(() => navigate(`/`));
       }
     },
   });
