@@ -8,15 +8,6 @@
       "maxLoan": 1,
       "minPayment": 100,
       "loanTerm": 12
-    },
-    {
-      "id": 2,
-      "name": "Avalebank",
-      "description": "This is description of bank",
-      "rate": 11,
-      "maxLoan": 1,
-      "minPayment": 100,
-      "loanTerm": 12
     }
   ]
 }

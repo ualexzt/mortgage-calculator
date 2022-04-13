@@ -7,9 +7,9 @@ export const getBanks = async () => {
   return await axios.get<IBankItem[]>(apiUrl + `/bank`);
 };
 
-// export const getMovie = async (id: number) => {
-//   return await axios.get<Movie>(apiUrl + `/films/${id}`);
-// // };
+export const getBank = async (id: number) => {
+  return await axios.get<IBankItem>(apiUrl + `/bank/${id}`);
+};
 //
 // export const addNewMovie = async (
 //   user: User | null,
@@ -31,6 +31,6 @@ export const getBanks = async () => {
 //   });
 // };
 //
-// export const deleteMovie = async (id: number) => {
-//   return await axios.delete(apiUrl + `/films/${id}`);
-// };
+export const deleteBank = async (id: number) => {
+  return await axios.delete(apiUrl + `/bank/${id}`);
+};

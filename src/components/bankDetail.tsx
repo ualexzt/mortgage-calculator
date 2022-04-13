@@ -1,39 +1,75 @@
-import { Box, Button, CardMedia, Grid, Paper, Typography } from '@mui/material';
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import {
+  Box,
+  Button,
+  CardMedia,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Grid,
+  Paper,
+  Typography,
+} from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { IBankItem } from '../types/bank.type';
+import { deleteBank, getBank } from '../services/bank.service';
 
 const BankDetail = () => {
   const navigate = useNavigate();
+  const params = useParams();
+  const [bank, setBank] = useState<IBankItem>({} as IBankItem);
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    getBank(Number(params.id)).then((res) => {
+      setBank(res.data);
+    });
+  }, [params.id]);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleDelete = () => {
+    deleteBank(Number(params.id)).then(() => navigate('/'));
+  };
   return (
     <>
       <Paper sx={{ my: 2, p: 2, mx: 'auto', maxWidth: 'lg', flexGrow: 1 }}>
         <Grid container spacing={2}>
           <Grid item>
-            <CardMedia component="img" height="240" image="" alt="Bank image" />
+            <CardMedia
+              component="img"
+              height="240"
+              image="https://worldscholarshipforum.com/wealth/wp-content/uploads/sites/4/2021/09/How-Do-banks-Make-Money.jpg"
+              alt="Bank image"
+            />
           </Grid>
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1" component="div">
-                  Bonk name
+                  {bank.name}
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  Description: Description
+                  Description: {bank.description}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Bank rate: bank rate
+                  Interest rate: {bank.rate}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Interest rate: Interest rate
+                  Maximum loan: {bank.maxLoan}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Maximum loan: Maximum loan
+                  Minimum down payment: {bank.minPayment}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Minimum down payment: Minimum down payment
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Loan term: Loan term
+                  Loan term: {bank.loanTerm}
                 </Typography>
               </Grid>
               <Grid item>
@@ -44,13 +80,35 @@ const BankDetail = () => {
                   <Button variant="outlined" sx={{ mr: 1 }}>
                     Edit
                   </Button>
-                  <Button variant="outlined">Remove</Button>
+                  <Button variant="outlined" onClick={handleClickOpen}>
+                    Remove
+                  </Button>
                 </Box>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
       </Paper>
+
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{'Delete bank'}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to delete the bank?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Disagree</Button>
+          <Button onClick={handleDelete} autoFocus>
+            Agree
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 };
