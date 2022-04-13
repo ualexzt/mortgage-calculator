@@ -77,7 +77,11 @@ const BankDetail = () => {
                   <Button variant="outlined" sx={{ mr: 1 }} onClick={() => navigate(-1)}>
                     Go Back
                   </Button>
-                  <Button variant="outlined" sx={{ mr: 1 }}>
+                  <Button
+                    variant="outlined"
+                    sx={{ mr: 1 }}
+                    onClick={() => navigate(`/bank/edit/${bank.id}`)}
+                  >
                     Edit
                   </Button>
                   <Button variant="outlined" onClick={handleClickOpen}>

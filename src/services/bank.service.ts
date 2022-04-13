@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { IBankItem } from '../types/bank.type';
+import { FormikState } from 'formik';
 
 const apiUrl = 'http://localhost:3005';
 
@@ -10,27 +11,23 @@ export const getBanks = async () => {
 export const getBank = async (id: number) => {
   return await axios.get<IBankItem>(apiUrl + `/bank/${id}`);
 };
-//
-// export const addNewMovie = async (
-//   user: User | null,
-//   values: Movie,
-//   resetForm: (nextState?: Partial<FormikState<Movie>> | undefined) => void
-// ) => {
-//   await axios.post<Movie>(apiUrl + `/films`, {
-//     ...values,
-//     author: user?.email,
-//     rate: 0,
-//   });
-//   resetForm();
-// };
-//
-// export const editMovie = async (id: number, values: Movie, user: User | null) => {
-//   return await axios.put<Movie>(apiUrl + `/films/${id}`, {
-//     ...values,
-//     author: user?.email,
-//   });
-// };
-//
+
+export const addNewBank = async (
+  values: IBankItem,
+  resetForm: (nextState?: Partial<FormikState<IBankItem>> | undefined) => void
+) => {
+  await axios.post<IBankItem>(apiUrl + `/bank`, {
+    ...values,
+  });
+  resetForm();
+};
+
+export const editBank = async (id: number, values: IBankItem) => {
+  return await axios.put<IBankItem>(apiUrl + `/bank/${id}`, {
+    ...values,
+  });
+};
+
 export const deleteBank = async (id: number) => {
   return await axios.delete(apiUrl + `/bank/${id}`);
 };

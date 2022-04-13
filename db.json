@@ -3,9 +3,9 @@
     {
       "id": 1,
       "name": "Monobank",
-      "description": "This is description of bank",
-      "rate": 11,
-      "maxLoan": 1,
+      "description": "This is description of bank new desc",
+      "rate": 3,
+      "maxLoan": 10000,
       "minPayment": 100,
       "loanTerm": 12
     }

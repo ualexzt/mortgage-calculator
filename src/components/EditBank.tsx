@@ -12,13 +12,13 @@ import {
   Typography,
 } from '@mui/material';
 import { useFormik } from 'formik';
-import { useParams } from 'react-router-dom';
-import { getBank } from '../services/bank.service';
+import { useNavigate, useParams } from 'react-router-dom';
+import { addNewBank, editBank, getBank } from '../services/bank.service';
 import { IBankItem } from '../types/bank.type';
 
 const EditBank = () => {
   const params = useParams();
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     function detail() {
@@ -40,11 +40,11 @@ const EditBank = () => {
       loanTerm: 0,
     },
     onSubmit: (values, { resetForm }) => {
-      // if (params.id) {
-      //   editMovie(Number(params.id), values, user).then(() => navigate(`/movies/${params.id}`));
-      // } else {
-      //   addNewMovie(user, values, resetForm).then(() => navigate(`/movies`));
-      // }
+      if (params.id) {
+        editBank(Number(params.id), values).then(() => navigate(`/bank/${params.id}`));
+      } else {
+        addNewBank(values, resetForm).then(() => navigate(`/bank`));
+      }
     },
   });
   return (
