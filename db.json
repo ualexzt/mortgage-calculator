@@ -3,6 +3,7 @@
     {
       "id": 1,
       "name": "Monobank",
+      "description": "This is description of bank",
       "rate": 11,
       "maxLoan": 1,
       "minPayment": 100,
@@ -11,6 +12,7 @@
     {
       "id": 2,
       "name": "Avalebank",
+      "description": "This is description of bank",
       "rate": 11,
       "maxLoan": 1,
       "minPayment": 100,
