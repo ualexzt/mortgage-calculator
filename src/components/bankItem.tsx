@@ -11,18 +11,20 @@ import {
 } from '@mui/material';
 import { red } from '@mui/material/colors';
 import { IBankItem } from '../types/bank.type';
+import { useNavigate } from 'react-router-dom';
 
 interface BankItemProps {
   bank: IBankItem;
 }
 
 const BankItem = ({ bank }: BankItemProps) => {
+  const navigate = useNavigate();
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
+            {bank.name[0].toUpperCase()}
           </Avatar>
         }
         title={bank.name}
@@ -36,12 +38,11 @@ const BankItem = ({ bank }: BankItemProps) => {
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
-          This impressive paella is a perfect party dish and a fun meal to cook together with your
-          guests. Add 1 cup of frozen peas along with the mussels, if you like.
+          {bank.description}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button>More detail</Button>
+        <Button onClick={() => navigate(`/bank/${bank.id}`)}>More detail</Button>
       </CardActions>
     </Card>
   );
