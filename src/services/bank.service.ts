@@ -31,3 +31,9 @@ export const editBank = async (id: number, values: IBankItem) => {
 export const deleteBank = async (id: number) => {
   return await axios.delete(apiUrl + `/bank/${id}`);
 };
+
+export const calculate = (price: number, pay: number, percent: number, month: number) => {
+  const i = percent / 100 / 12;
+  const r = (price - pay) * ((i * Math.pow(1 + i, month)) / (Math.pow(1 + i, month) - 1));
+  return r.toFixed(2);
+};

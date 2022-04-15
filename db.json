@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Monobank",
       "description": "This is description of bank new desc",
-      "rate": 3,
+      "rate": 2,
       "maxLoan": 10000,
       "minPayment": 100,
       "loanTerm": 12

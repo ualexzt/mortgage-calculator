@@ -24,7 +24,7 @@ const BankItem = ({ bank }: BankItemProps) => {
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {bank.name[0].toUpperCase()}
+            {bank.name ? bank.name[0].toUpperCase() : 'B'}
           </Avatar>
         }
         title={bank.name}

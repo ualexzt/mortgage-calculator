@@ -14,12 +14,16 @@ const Header = () => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Mortgage calculator
+              <Button color="inherit" onClick={() => navigate('/')}>
+                Mortgage calculator
+              </Button>
             </Typography>
             <Button color="inherit" onClick={() => navigate('/bank/add')}>
               Add Bank
             </Button>
-            <Button color="inherit">Calculator</Button>
+            <Button color="inherit" onClick={() => navigate('/calc')}>
+              Calculator
+            </Button>
           </Toolbar>
         </AppBar>
       </Box>
