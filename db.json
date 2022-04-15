@@ -6,7 +6,7 @@
       "description": "This is description of bank new desc",
       "rate": 2,
       "maxLoan": 10000,
-      "minPayment": 100,
+      "minPayment": 10,
       "loanTerm": 12
     },
     {
@@ -14,7 +14,7 @@
       "description": "This is the best bank",
       "rate": 1,
       "maxLoan": 100000,
-      "minPayment": 1000,
+      "minPayment": 5,
       "loanTerm": 36,
       "id": 2
     },
@@ -23,7 +23,7 @@
       "description": "This is city bank",
       "rate": 3,
       "maxLoan": 50000,
-      "minPayment": 500,
+      "minPayment": 20,
       "loanTerm": 60,
       "id": 3
     }

@@ -60,16 +60,16 @@ const BankDetail = () => {
                   Description: {bank.description}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Interest rate: {bank.rate}
+                  Interest rate: {bank.rate}%
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Maximum loan: {bank.maxLoan}
+                  Maximum loan: ${bank.maxLoan}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Minimum down payment: {bank.minPayment}
+                  Minimum down payment: {bank.minPayment}%
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Loan term: {bank.loanTerm}
+                  Loan term: {bank.loanTerm} month
                 </Typography>
               </Grid>
               <Grid item>

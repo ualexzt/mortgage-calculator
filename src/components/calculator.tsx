@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {
+  Alert,
   Button,
   FormControl,
   Grid,
+  IconButton,
   InputAdornment,
   InputLabel,
   MenuItem,
@@ -16,6 +18,7 @@ import { calculate, getBanks } from '../services/bank.service';
 import { IBankItem } from '../types/bank.type';
 import { useFormik } from 'formik';
 import TableContent from './tableContent';
+import CloseIcon from '@mui/icons-material/Close';
 
 interface Calc {
   initLoan: number;
@@ -28,6 +31,7 @@ const Calculator = () => {
   const [value, setValue] = useState('');
   const [calc, setCalc] = useState(0);
   const [downPay, setDownPay] = useState(0);
+  const [alert, setAlert] = useState(false);
 
   useEffect(() => {
     getBanks().then((res) => {
@@ -46,11 +50,18 @@ const Calculator = () => {
       downPay: 0,
     },
     onSubmit: (values) => {
-      const calc = Number(
-        calculate(values.initLoan, values.downPay, selBank.rate, selBank.loanTerm)
-      );
-      setCalc(calc);
-      setDownPay(values.downPay);
+      if (
+        values.downPay <= values.initLoan * (selBank.minPayment / 100) ||
+        values.initLoan > selBank.maxLoan
+      ) {
+        setAlert(true);
+      } else {
+        const calc = Number(
+          calculate(values.initLoan, values.downPay, selBank.rate, selBank.loanTerm)
+        );
+        setCalc(calc);
+        setDownPay(values.downPay);
+      }
     },
   });
   return (
@@ -108,6 +119,27 @@ const Calculator = () => {
           Apply
         </Button>
       </form>
+      {alert && (
+        <Alert
+          variant="outlined"
+          severity="warning"
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setAlert(false);
+              }}
+            >
+              <CloseIcon fontSize="inherit" />
+            </IconButton>
+          }
+          sx={{ mb: 2 }}
+        >
+          Exceeded maximum loan amount or insufficient minimum down payment
+        </Alert>
+      )}
       <TableContent calc={calc} downPay={downPay} rate={selBank.rate} />
     </Paper>
   );

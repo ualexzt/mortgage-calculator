@@ -115,7 +115,7 @@ const EditBank = () => {
                 <FormControl fullWidth>
                   <InputLabel htmlFor="mim">Minimum payment</InputLabel>
                   <OutlinedInput
-                    startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                    startAdornment={<InputAdornment position="start">%</InputAdornment>}
                     type="number"
                     id="min"
                     label="Minimum payment"
