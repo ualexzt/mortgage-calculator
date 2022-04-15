@@ -28,7 +28,6 @@ const BankItem = ({ bank }: BankItemProps) => {
           </Avatar>
         }
         title={bank.name}
-        subheader="September 14, 2016"
       />
       <CardMedia
         component="img"
