@@ -12,7 +12,7 @@
     {
       "name": "Alpha Bank",
       "description": "This is the best bank",
-      "rate": 1,
+      "rate": 4,
       "maxLoan": 100000,
       "minPayment": 5,
       "loanTerm": 36,

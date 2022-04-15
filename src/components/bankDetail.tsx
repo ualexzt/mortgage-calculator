@@ -74,7 +74,7 @@ const BankDetail = () => {
               </Grid>
               <Grid item>
                 <Box sx={{ display: 'flex' }}>
-                  <Button variant="outlined" sx={{ mr: 1 }} onClick={() => navigate(-1)}>
+                  <Button variant="outlined" sx={{ mr: 1 }} onClick={() => navigate('/')}>
                     Go Back
                   </Button>
                   <Button
